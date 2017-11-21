@@ -1,0 +1,15 @@
+{
+  "name": "whalesong",
+  "version": "1.0.0",
+  "description": "WhaleBot - Upvote Bot",
+  "main": "bot.js",
+  "dependencies": {
+    "steem-bot": "^0.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@cloh76",
+  "license": "ISC"
+}
