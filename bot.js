@@ -1,6 +1,7 @@
 const SteemBot = require('steem-bot').default;
 const express = require('express');
 const bodyParser = require("body-parser");
+const fs = require('fs');
 var app = express();
 
 app.set("view engine", "ejs");
@@ -26,6 +27,19 @@ function handleDeposit(data, responder) {
   if (parseFloat(data.amount) >= 0.01 &&  isValidSteemitLink(data.memo)) {
     // generate a float number between 1 and 5
     const randomVote = (Math.random() * 4).toFixed(2) + 1;
+
+    fs.readFile('database.json', function (err, data) {
+    var json = JSON.parse(data);
+    json.data.push({
+      "user" : data.from,
+      "amount" : data.amount,
+      "vote" : randomVote.toString() + "%",
+      "link" : data.memo,
+      "date": new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
+    });
+
+    fs.writeFile("database.json", JSON.stringify(json));
+    });
 
     responder.upvoteOnMemo(randomVote)
       .then(() => {
