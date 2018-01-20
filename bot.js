@@ -63,4 +63,9 @@ function handleDeposit(data, responder) {
   }
 }
 
-bot.start();
+var PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  bot.start();
+  console.log("Bot Panel online on http://localhost:"+PORT);
+});
