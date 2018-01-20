@@ -1,11 +1,18 @@
-const SteemBot = require('steem-bot').default
+const SteemBot = require('steem-bot').default;
+const express = require('express');
+const bodyParser = require("body-parser");
+var app = express();
+
+app.set("view engine", "ejs");
+app.set("views", __dirname);
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const username = 'Your Steem Username';
 // we only use active key here since we need to transfer back the money
 // using postingKey for posting comment is not necessary since if it's not available steem-bot automatically pick activeKey
 const activeKey = 'Your Private Active Key'; // Use environment variables instead of hardcoding to be safer
 
-// helper function to identify if memo has a valid steemit link 
+// helper function to identify if memo has a valid steemit link
 function isValidSteemitLink(link) {
   return link.indexOf('steemit.com') > -1;
 }
