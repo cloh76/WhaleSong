@@ -8,6 +8,13 @@ app.set("view engine", "ejs");
 app.set("views", __dirname);
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.get("/", (req, res) => {
+  fs.readFile('database.json', (err, data) => {
+    var json = JSON.parse(data);
+    res.render("index", { database: data });
+  });
+});
+
 const username = 'Your Steem Username';
 // we only use active key here since we need to transfer back the money
 // using postingKey for posting comment is not necessary since if it's not available steem-bot automatically pick activeKey
