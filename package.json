@@ -4,6 +4,10 @@
   "description": "WhaleBot - Upvote Bot",
   "main": "bot.js",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "open": "0.0.5",
     "steem-bot": "^0.7.0"
   },
   "devDependencies": {},

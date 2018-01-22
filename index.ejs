@@ -1,0 +1,25 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+
+<h1>Bot Activity</h1>
+<table style="width:100%">
+  <tr>
+    <th>User</th>
+    <th>Amount(STEEM)</th>
+    <th>Vote Procentage</th>
+    <th>Article link</th>
+    <th>Date and Time</th>
+  </tr>
+  <% for(var i = 0;i<database.length;i++){ %>
+  <tr>
+    <td><%= database[i].user %></td>
+    <td><%= database[i].amount %></td>
+    <td><%= database[i].vote %></td>
+    <td><%= database[i].link %></td>
+    <td><%= database[i].date %></td>
+  </tr>
+  <% } %>
+</table>
